@@ -13,6 +13,13 @@
  (*) Router
 >(*) Vuex
 
+`$ yarn serve`  
+
+
+# References
+
+CSS Tools: [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)  
+
 ## Project setup
 ```
 yarn install
