@@ -1,16 +1,17 @@
 <template>
   <div class="text_group">
-    <div class="input_group">
+    <div class="input_group" :class="{'is-invalid':error}">
       <input
-        :type="text"
+        :type="type"
         :value="value"
         :placeholder="placeholder"
         :name="name"
         @input="$emit('input',$event.target.value)"
-      >
-      <button v-if="btnTitle" :disabled="disabled" @click="$emit('btnClick')">{{btnTitle}}</button>
-      <div v-if="error" class="invalid-feedback">{{error}}</div>
+      > 
+      <button v-if="btnTitle" :disabled="disabled" @click="$emit('btnClick')">{{btnTitle}}</button> 
     </div>
+
+    <div v-if="error" class="invalid-feedback">{{error}}</div>
   </div>
 </template>
 

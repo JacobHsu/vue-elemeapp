@@ -9,7 +9,8 @@
       placeholder="手機號" 
       :btnTitle="btnTitle" 
       :disabled="disabled" 
-      :error="errors.phone"/>
+      :error="errors.phone"
+      @btnClick="getVerifyCode"/>
     <InputGroup type="number" v-model="verifyCode" placeholder="驗證碼" :error="errors.code"/>
     <div class="login_des">
       <p>
@@ -25,8 +26,9 @@
 </template>
 
 <script>
-import  InputGroup from '../components/inputGroup' 
+import  InputGroup from '../components/inputGroup';
 import { verify } from 'crypto';
+import { setInterval, clearInterval } from 'timers';
 export default {
   name: "login",
   data() {
@@ -36,6 +38,43 @@ export default {
       errors: {},
       btnTitle: "獲取驗證碼",
       disabled: false
+    }
+  },
+  methods: {
+    getVerifyCode() {
+      if( this.validatePhone() ) {
+        this.validateBtn();
+      }
+    },
+    validateBtn() {
+      let time = 60;
+      let timer = setInterval(()=>{
+        if( time==0 ) {
+          clearInterval(timer);
+          this.btnTitle = '獲取驗證碼';
+          this.disabled = false;
+        } else {
+          this.btnTitle = time + '秒後重試';
+          this.disabled = true;
+          time--;
+        }
+      },1000)
+    },
+    validatePhone() {
+      if(!this.phone) {
+        this.errors = {
+          phone: '手機號碼不能為空'
+        }
+        return false;
+      } else if (!/^1[3456789]\d{9}$/.test(this.phone)) {
+        this.errors = {
+          phone: '請填寫正確的手機號碼'
+        }
+        return false;
+      } else {
+        this.errors = {};
+        return true;
+      }
     }
   },
   components: {
@@ -75,8 +114,6 @@ export default {
   height: 40px;
   background-color: #48ca38;
   border-radius: 4px;
-  color: white;
-  font-size: 14px;
   color: white;
   font-size: 14px;
   border: none;
