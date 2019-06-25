@@ -44,6 +44,14 @@ export default {
     getVerifyCode() {
       if( this.validatePhone() ) {
         this.validateBtn();
+        this.$axios.post("/api/posts/sms_send", {
+          tpl_id: "167467",  
+          key: "ac646ca02956beb582a5e226b2667007",
+          phone: this.phone  
+        })
+        .then(res =>{
+          console.log(res)
+        })
       }
     },
     validateBtn() {

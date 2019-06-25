@@ -22,6 +22,9 @@ CSS Tools: [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
 [js最新手机号码、电话号码正则表达式](http://caibaojian.com/regexp-example.html)  
 > 小括號就是括號內看成一個整體 ,中括號就是匹配括號內的其中一個
 [跨域问题之手机号码登录验证](https://blog.csdn.net/qq_40885461/article/details/89287851)  
+[聚合数据](https://www.juhe.cn/): API数据接口_免费数据调用  即時通訊/短信API服務  模板ID  tpl_id
+[短信API服务](https://www.juhe.cn/docs/api/id/54)  
+[Adding Instance Properties](https://vuejs.org/v2/cookbook/adding-instance-properties.html)  
 
 ## Project setup
 ```
