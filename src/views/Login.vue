@@ -19,7 +19,7 @@
       </p>
     </div>
     <div class="login_btn">
-      <button>登入</button>
+      <button :disabled="isClick" @click="handleLogin">登入</button>
     </div>
 
   </div>
@@ -40,7 +40,31 @@ export default {
       disabled: false
     }
   },
+  computed: {
+    isClick() {
+      if(!this.phone || !this.verifyCode) return true;
+      else return false;
+    }
+  },
   methods: {
+    handleLogin() {
+      this.errors = {};
+      this.$axios.post("/api/posts/sms_back",{
+        phone: this.phone,
+        code: this.verifyCode
+      })
+      .then(res=>{
+        //console.log(res);
+        localStorage.setItem("ele_login", true); 
+        this.$router.push("/");
+      })
+      .catch(err=>{
+        this.errors = {
+          code: err.response.data.msg 
+        }
+
+      })
+    },
     getVerifyCode() {
       if( this.validatePhone() ) {
         this.validateBtn();
