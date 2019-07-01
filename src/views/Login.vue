@@ -54,7 +54,7 @@ export default {
         code: this.verifyCode
       })
       .then(res=>{
-        //console.log(res);
+        //console.log(res);~
         localStorage.setItem("ele_login", true); 
         this.$router.push("/");
       })

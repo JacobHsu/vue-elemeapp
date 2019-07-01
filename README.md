@@ -15,6 +15,10 @@
 
 `$ yarn serve`  
 
+# Note
+
+當前路由下有子路由 children 不能設置`name`屬性  
+Font Awesome cdn 引入在 `pulbic/index.html`
 
 # References
 
@@ -25,6 +29,7 @@ CSS Tools: [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
 [聚合数据](https://www.juhe.cn/): API数据接口_免费数据调用  即時通訊/短信API服務  模板ID  tpl_id
 [短信API服务](https://www.juhe.cn/docs/api/id/54)  
 [Adding Instance Properties](https://vuejs.org/v2/cookbook/adding-instance-properties.html)  
+[vue3.0 仿微信實時通信Tab切換與子路由](https://www.twblogs.net/a/5c260625bd9eee16b3db87c6)  
 
 ## Project setup
 ```

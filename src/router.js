@@ -10,8 +10,29 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index
+      //name: 'index',
+      component: Index,
+      children: [
+        {
+          path: "",
+          redirect:"/home"
+        },
+        {
+          path: "/home",
+          name: "home",
+          component: ()=> import('./views/Home.vue')
+        },
+        {
+          path: "/order",
+          name: "order",
+          component: ()=> import('./views/Order.vue')
+        },
+        {
+          path: "/me",
+          name: "me",
+          component: ()=> import('./views/Me.vue')
+        }
+      ]
     },
     {
       path: '/login',
