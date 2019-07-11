@@ -27,7 +27,9 @@ export default {
 
         function onComplete (data) {
           // data是具体的定位信息 精準定位
-          console.log(data)
+          //console.log(data)
+          self.$store.dispatch("setLocation", data);
+          self.$store.dispatch("setAddress", data.formattedAddress)
         }
 
         function onError (data) {
@@ -38,6 +40,7 @@ export default {
       })
     },
     getLngLocation() {
+      const self = this;
       AMap.plugin('AMap.CitySearch', function () {
         var citySearch = new AMap.CitySearch()
         citySearch.getLocalCity(function (status, result) {
@@ -56,7 +59,16 @@ export default {
               geocoder.getAddress(lnglat, function(status, data) {
                 if (status === 'complete' && data.info === 'OK') {
                     // result为对应的地理位置详细信息
-                    console.log(data)
+                    //console.log(data)
+                    self.$store.dispatch("setLocation",{
+                      addressComponent: {
+                        city: result.city,
+                        province: result.province
+                      },
+                      formattedAddress: data.regeocode.formattedAddress
+                    })
+
+                    self.$store.dispatch("setAddress",data.regeocode)
                 }
               })
             })

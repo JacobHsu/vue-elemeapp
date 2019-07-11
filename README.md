@@ -19,6 +19,7 @@
 
 當前路由下有子路由 children 不能設置`name`屬性  
 Font Awesome cdn 引入在 `pulbic/index.html`
+emmet `i.fa.fa-map-marker` 
 
 # References
 
