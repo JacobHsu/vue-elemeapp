@@ -31,6 +31,11 @@ const router = new Router({
           path: "/me",
           name: "me",
           component: ()=> import('./views/Me.vue')
+        },
+        {
+          path: "/address",
+          name: "address",
+          component: ()=> import('./views/Address.vue')
         }
       ]
     },
@@ -42,13 +47,13 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) =>{
-  const isLogin = localStorage.ele_login ? true : false;
-  if (to.path == '/login') {
-    next();
-  } else {
-    isLogin ? next() : next("/login");
-  }
-})
+// router.beforeEach((to, from, next) =>{
+//   const isLogin = localStorage.ele_login ? true : false;
+//   if (to.path == '/login') {
+//     next();
+//   } else {
+//     isLogin ? next() : next("/login");
+//   }
+// })
 
 export default router;
