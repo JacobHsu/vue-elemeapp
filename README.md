@@ -21,8 +21,16 @@
 Font Awesome cdn 引入在 `pulbic/index.html`
 emmet `i.fa.fa-map-marker` 
 
+
+@click="$router.push(`'/address'`)" 直接跳轉
+@click="$router.push(`{name: 'address', parms: {city: city}}`)" 跳轉並傳遞參數  
+
+beforeRouteEnter 被跳轉頁接收參數  
+
 # ui
 font [chevron-left](https://fontawesome.com/icons/chevron-left?style=solid)  
+font [fa-angle-down](https://fontawesome.com/v4.7.0/icon/angle-down)
+font [fa-location-arrow](https://fontawesome.com/v4.7.0/icon/location-arrow)  
 
 # References
 
