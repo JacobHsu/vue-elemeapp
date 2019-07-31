@@ -46,6 +46,7 @@ CSS Tools: [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
 教程 > 入门 > [准备](https://lbs.amap.com/api/javascript-api/guide/abc/prepare)  `index.html`
 [定位](https://lbs.amap.com/api/javascript-api/guide/services/geolocation) `app.vue`
 IP定位获取当前城市信息   [地理编码与逆地理编码](https://lbs.amap.com/api/javascript-api/guide/services/geocoder)  
+[输入提示与POI搜索](https://lbs.amap.com/api/javascript-api/guide/services/autocomplete)  
 
 ## Project setup
 ```
