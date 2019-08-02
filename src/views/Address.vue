@@ -3,7 +3,7 @@
     <Header :isLeft="true" title="選擇收貨地址" />
     <div class="city_search">
       <div class="search">
-        <span class="city">
+        <span class="city" @click="$router.push('/city')">
           {{city}}
           <i class="fa fa-angle-down"></i>
         </span>
@@ -13,8 +13,10 @@
       <Location :address="address" />
       <div class="area">
         <ul class="area_list" v-for="(item, index) in areaList" :key="index">
-          <li>1{{item.name}}</li>
-          <p>{{item.district}} {{item.address}}</p>
+          <li @click="selectAddress(item)">
+            <h4>{{item.name}}</h4>
+            <p>{{item.district}} {{item.address}}</p>
+          </li>
         </ul>
       </div>
     </div>
@@ -60,6 +62,13 @@ export default {
           self.areaList = result.tips;
         });
       });
+    },
+    selectAddress(item) {
+      this.$store.dispatch(
+        "setAddress",
+        item.district + item.address + item.name
+      );
+      this.$router.push("/home")
     }
   },
   components: {
@@ -114,9 +123,9 @@ export default {
 .area li {
   border-bottom: 1px solid #eee;
   padding: 8px 16px;
-  color: #aaa
+  color: #aaa;
 }
-.area li h4{
+.area li h4 {
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
