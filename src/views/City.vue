@@ -11,17 +11,21 @@
         <div class="location">
             <Location :address="city" />
         </div>
+        <Alphabet :cityInfo="cityInfo" :keys="keys"/>
     </div>
   </div>
 </template>
 
 <script>
-import Location  from '../components/Location'
+import Location from '../components/Location'
+import Alphabet from '../components/Alphabet'
 export default {
   name: "City",
   data() {
       return {
-          city_val: ""
+          city_val: "",
+          cityInfo:null,
+          keys:[]
       }
   },
   computed: {
@@ -30,7 +34,26 @@ export default {
     }
   },
   components: {
-      Location
+      Location,
+      Alphabet
+  },
+  created() {
+      this.getCityInfo();
+  },
+  methods: {
+      getCityInfo() {
+          this.$axios("/api/posts/cities")
+          .then(res =>{
+              //console.log(res.data)
+              this.cityInfo = res.data;
+              this.keys = Object.keys(res.data)
+              this.keys.pop();  //hotcities remove
+              this.keys.sort();
+          }) 
+          .catch(err=>{
+              console.log(err)
+          })
+      }
   }
 }
 </script>
